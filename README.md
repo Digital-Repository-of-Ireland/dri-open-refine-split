@@ -23,4 +23,9 @@ Optional command-line parameters are --filename and --outputdir
 
 If you do not pass the intput filename and outputdir on the command line you will be prompted to enter or select them. If you have Tkinter installed you can select the input file and output directory via a Graphical User Interface, otherwise they can be typed in on the command line.
 
+# Tests
+You can run the tests by entering the following into the command line.  
+`python -m unittest discover tests --buffer`
 
+Tested on python versions: 3.4 - 3.6
+For more information see the .travis.yml file
