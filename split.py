@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 import argparse
 from os import path
 import re
@@ -43,9 +42,9 @@ def setup_params():
     outputdir = outputdir.rstrip()
 
     if path.isfile(filename) and path.isdir(outputdir):
-        print("Processing input file ", filename)
-        print("Creating output xml files in ",outputdir)
-        return filename,outputdir
+        print("Processing input file", filename)
+        print("Creating output xml files in", outputdir)
+        return filename, outputdir
     else:
         print("Invalid input or output location")
         exit(1)
@@ -78,18 +77,15 @@ def process_file(inputfile, outputdir):
                 outfile = path.join(outputdir, str(filecount) + ".xml")
 
             # Write the line to the current outfile
-            o = open(outfile, "a")
-            o.write(line)
-            o.close
+            with open(outfile, "a") as o:
+                o.write(line)
 
             # If we have reached the end of the file reset the filename
             searchObj = re.search( r'^</qualifieddc', line)
             if searchObj:
                 outfile = False
-                filecount = filecount+1
-
+                filecount += 1
 
 
 if __name__ == '__main__':
     main()
-
