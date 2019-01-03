@@ -17,7 +17,7 @@ To use the Graphical User Interface install the Python 3 Tkinter module.
 Clone the repository from Github.
 
 # Running
-You can run this tool by double-clicking on the script.py file. Alternatively, you can run it from the command line.
+You can run this tool by double-clicking on the split.py file. Alternatively, you can run it from the command line.
 
 Optional command-line parameters are --filename and --outputdir
 
