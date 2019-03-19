@@ -92,6 +92,7 @@ class Split:
                     outfile = False
                     filecount += 1
 
+
 def main():
     root = Tk()
     split = Split(root)

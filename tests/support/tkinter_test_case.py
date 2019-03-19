@@ -1,5 +1,5 @@
 import unittest
-import sys  
+import sys
 import _tkinter
 
 try:
@@ -8,6 +8,8 @@ except ImportError:
     from Tkinter import Tk
 
 # https://stackoverflow.com/a/49028688/6305204
+
+
 class TKinterTestCase(unittest.TestCase):
     def setUp(self):
         self.root = Tk()

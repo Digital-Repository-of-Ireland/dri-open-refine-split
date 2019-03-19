@@ -7,9 +7,12 @@ except ImportError:
     try:
         from Tkinter import Toplevel, Tk
         from Tkinter import *
-        import Tkinter, Tkconstants, tkFileDialog
+        import Tkinter
+        import Tkconstants
+        import tkFileDialog
     except ImportError as e:
         gui = False
+
 
 class TkLegacy:
     def get_dialog(self):
