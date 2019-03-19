@@ -12,9 +12,12 @@ try:
 except ImportError:
     # 2.7. block
     try:
-        from Tkinter import filedialog
-        from Tkiner import *
-    except ImportError:
+        # import pdb
+        # pdb.set_trace()
+        print("2.7")
+        from Tkinter import *
+        import Tkinter, Tkconstants, tkFileDialog
+    except ImportError as e:
         gui = False
 
 def main():
@@ -34,11 +37,17 @@ def setup_params():
     parser.add_argument('--outputdir', help='Directory in which to create the split xml files')
     args = parser.parse_args()
 
+    # 2.7. block https://pythonspot.com/tk-file-dialogs/
+    try:
+        dialog = filedialog
+    except NameError:
+        dialog = tkFileDialog
+
     if gui:
-        filename = args.filename or filedialog.askopenfilename(initialdir = ".",
+        filename = args.filename or dialog.askopenfilename(initialdir = ".",
                                     title = "Select file",
                                     filetypes = (("xml files","*.xml"),("all files","*.*")))
-        outputdir = args.outputdir or filedialog.askdirectory(initialdir = ".",
+        outputdir = args.outputdir or dialog.askdirectory(initialdir = ".",
                                     title = "Select output diretory")
     else:
         filename = args.filename or input("Please enter the input filename ")
