@@ -1,6 +1,5 @@
 # functions being tested
-from split import process_file
-from split import setup_params
+from split import Split
 
 import sys
 import argparse
@@ -27,14 +26,14 @@ class TestSplit(unittest.TestCase):
 
     def test_process_file_not_found(self):
         with self.assertRaises(EnvironmentError) as context:
-            process_file('asdf', 'asdf')
+            Split().process_file('asdf', 'asdf')
 
         self.assertTrue("No such file or directory: 'asdf'" in str(context.exception)) 
 
     def test_setup_params_cli_args(self):
         args = argparse.Namespace(filename = self.filename, outputdir = self.outputdir)
         with patch('argparse.ArgumentParser.parse_args', return_value = args):
-            self.assertEqual((self.filename, self.outputdir), setup_params())
+            self.assertEqual((self.filename, self.outputdir), Split().setup_params())
             output = self.get_stdout()
             self.assertTrue("Processing input file " + self.filename in output)
             self.assertTrue("Creating output xml files in " + self.outputdir in output)
@@ -45,7 +44,7 @@ class TestSplit(unittest.TestCase):
             args = argparse.Namespace(filename = arg_list[0], outputdir = arg_list[1])
             with patch('argparse.ArgumentParser.parse_args',return_value = args):
                 with self.assertRaises(SystemExit):
-                    setup_params()
+                    Split().setup_params()
                     output = self.get_stdout()
                     self.assertTrue("Invalid input or output location" in output)
 
