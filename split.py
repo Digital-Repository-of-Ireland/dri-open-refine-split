@@ -5,20 +5,8 @@ import argparse
 from os import path
 import re
 
-gui = True
-try:
-    from tkinter import filedialog
-    from tkinter import *
-except ImportError:
-    # 2.7. block
-    try:
-        # import pdb
-        # pdb.set_trace()
-        print("2.7")
-        from Tkinter import *
-        import Tkinter, Tkconstants, tkFileDialog
-    except ImportError as e:
-        gui = False
+# custom
+from legacy.tk_legacy import TkLegacy, gui
 
 def main():
     filename, outputdir = setup_params()
@@ -37,11 +25,7 @@ def setup_params():
     parser.add_argument('--outputdir', help='Directory in which to create the split xml files')
     args = parser.parse_args()
 
-    # 2.7. block https://pythonspot.com/tk-file-dialogs/
-    try:
-        dialog = filedialog
-    except NameError:
-        dialog = tkFileDialog
+    dialog = TkLegacy().get_dialog()
 
     if gui:
         filename = args.filename or dialog.askopenfilename(initialdir = ".",

@@ -13,7 +13,7 @@ except ImportError:
     from mock import patch
 
 class TestSplit(unittest.TestCase):
-    def __init__(self, methodName="runTest"):
+    def __init__(self, methodName = "runTest"):
         unittest.TestCase.__init__(self, methodName)
         self.filename = "./tests/fixtures/qdc1.xml"
         self.outputdir = "./tests/fixtures/out"
@@ -32,8 +32,8 @@ class TestSplit(unittest.TestCase):
         self.assertTrue("No such file or directory: 'asdf'" in str(context.exception)) 
 
     def test_setup_params_cli_args(self):
-        args = argparse.Namespace(filename=self.filename, outputdir=self.outputdir)
-        with patch('argparse.ArgumentParser.parse_args',return_value=args):
+        args = argparse.Namespace(filename = self.filename, outputdir = self.outputdir)
+        with patch('argparse.ArgumentParser.parse_args', return_value = args):
             self.assertEqual((self.filename, self.outputdir), setup_params())
             output = self.get_stdout()
             self.assertTrue("Processing input file " + self.filename in output)
@@ -42,8 +42,8 @@ class TestSplit(unittest.TestCase):
     def test_setup_params_invalid_params(self):
         # if either the input file or output directory are invalid, print warning
         for arg_list in [[self.filename, "asdf"], ["asdf", self.outputdir]]:
-            args = argparse.Namespace(filename=arg_list[0], outputdir=arg_list[1])
-            with patch('argparse.ArgumentParser.parse_args',return_value=args):
+            args = argparse.Namespace(filename = arg_list[0], outputdir = arg_list[1])
+            with patch('argparse.ArgumentParser.parse_args',return_value = args):
                 with self.assertRaises(SystemExit):
                     setup_params()
                     output = self.get_stdout()
