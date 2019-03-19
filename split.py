@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 import argparse
 from os import path
 import re
@@ -9,7 +10,12 @@ try:
     from tkinter import filedialog
     from tkinter import *
 except ImportError:
-    gui = False
+    # 2.7. block
+    try:
+        from Tkinter import filedialog
+        from Tkiner import *
+    except ImportError:
+        gui = False
 
 def main():
     filename, outputdir = setup_params()
