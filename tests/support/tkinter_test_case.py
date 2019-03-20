@@ -7,10 +7,9 @@ try:
 except ImportError:
     from Tkinter import Tk
 
-# https://stackoverflow.com/a/49028688/6305204
-
 
 class TKinterTestCase(unittest.TestCase):
+    # https://stackoverflow.com/a/49028688/6305204
     def setUp(self):
         self.root = Tk()
         self.pump_events()

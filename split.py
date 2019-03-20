@@ -73,6 +73,7 @@ class Split:
                     continue
 
                 # Set the outfile name
+                # TODO: handle case where filename is on same line as tag
                 searchObj = re.search(r'^FILENAME (.*)', line)
                 if searchObj:
                     outfile = path.join(outputdir, searchObj.group(1).rstrip() + ".xml")

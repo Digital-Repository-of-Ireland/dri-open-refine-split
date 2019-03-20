@@ -5,10 +5,10 @@ import unittest
 
 # pre 3.3 need to pip install mock
 try:
-    from unittest.mock import patch, MagicMock
+    from unittest.mock import patch
     from tkinter import *
 except ImportError:
-    from mock import patch, MagicMock
+    from mock import patch
     from Tkinter import *
 
 from support.tkinter_test_case import TKinterTestCase
@@ -28,7 +28,6 @@ class TestGui(TKinterTestCase):
                     with self.assertRaises(SystemExit) as context:
                         split = Split(self.root)
                         self.pump_events()
-                        # split.dialog = MagicMock(name='dialog', return_value='test')
                         split.setup_params()
                         output = get_stdout()
                         assertTrue(output, 'Invalid input or output location')
