@@ -3,8 +3,6 @@ from split import Split
 
 import glob
 import os
-import os
-import sys
 import argparse
 import unittest
 
@@ -23,9 +21,9 @@ class TestCli(unittest.TestCase):
         self.file1 = os.path.join('.', 'tests', 'fixtures', 'qdc1.xml')
         self.outputdir = os.path.join('.', 'tests', 'fixtures', 'out')
 
+    # TODO: stub filesystem? python equivalent to ruby fakefs?
     def tearDown(self):
         # clean up, remove xml files from output after each test
-        # TODO: stub filesystem? python equivalent to ruby fakefs?
         for file in glob.glob(os.path.join(self.outputdir, '*.xml')):
             os.remove(file)
 
