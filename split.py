@@ -64,7 +64,7 @@ class Split:
     def process_file(self, inputfile, outputdir):
         filecount = 1
         outfile = False
-        with open(inputfile) as i:
+        with open(inputfile, encoding="utf8") as i:
             for line in i:
 
                 # ignore blank lines
