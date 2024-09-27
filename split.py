@@ -72,6 +72,7 @@ class Split:
                 if searchObj:
                     continue
 
+                # TODO: handle case where filename is on same line as tag?
                 # Set the outfile name
                 searchObj = re.search(r'^FILENAME (.*)', line)
                 if searchObj:

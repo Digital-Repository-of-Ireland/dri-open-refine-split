@@ -114,3 +114,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Local dev python2 support, ignore for now
+Pipfile*
+test.sh

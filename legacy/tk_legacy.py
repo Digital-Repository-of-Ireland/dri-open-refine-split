@@ -1,3 +1,4 @@
+# try to use tkinter, if it fails for both python 2.x and 3.x use cli
 gui = True
 try:
     from tkinter import filedialog, Toplevel, Tk

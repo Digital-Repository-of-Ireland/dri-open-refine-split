@@ -1,10 +1,8 @@
 import sys
 
-# https://stackoverflow.com/questions/4219717/how-to-assert-output-with-nosetest-unittest-in-python
-# output helper (hides pdb output too)
-
 
 def get_stdout():
+    # used to test values sent to stdout (hides pdb output too)
     if not hasattr(sys.stdout, "getvalue"):
-        self.fail("need to run in buffered mode")
+        self.fail("need to run in buffered mode (--buffer)")
     return sys.stdout.getvalue().strip()
